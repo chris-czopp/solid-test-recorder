@@ -1,0 +1,14 @@
+version: "3.5"
+
+services:
+  solid_test_recorder:
+    build: .
+    container_name: solid_test_recorder
+    command: "yarn start"
+    volumes:
+      - .:/src/solid-test-recorder:rw
+      - /src/solid-test-recorder/node_modules
+    ports:
+      - 7070:7070
+    env_file:
+      - .env

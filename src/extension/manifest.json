@@ -1,0 +1,28 @@
+{
+  "name":"Solidjs Test Recorder",
+  "version":"0.0.1",
+  "manifest_version": 3,
+  "description": "",
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["documentStart.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*/*"],
+      "js": ["documentEnd.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "bundles/index-1.js",
+        "objectReloader.js"
+      ],
+      "matches": ["*://*/*"]
+    }
+  ],
+  "devtools_page": "devtools_page.html"
+}

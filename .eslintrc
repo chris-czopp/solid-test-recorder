@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "standard"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "mocha": true
+  },
+  "rules": {
+    "indent": "off",
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "multiline-ternary": "off",
+    "space-before-function-paren": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off"
+  },
+  "globals": {
+    "chrome": true
+  }
+}

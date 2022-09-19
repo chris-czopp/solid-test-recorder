@@ -1,0 +1,3 @@
+NODE_ENV=local
+PORT=7000
+LOCATION_ORIGIN=http://localhost:7000
