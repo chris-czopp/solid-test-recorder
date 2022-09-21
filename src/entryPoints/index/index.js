@@ -283,7 +283,19 @@ const reloadTestRecorder = async () => {
               let debounceTimeout
 
               return (e) => {
-                const preferredSelector = getPreferredSelector(e.target)
+                let target = e.target
+                let preferredSelector = getPreferredSelector(target)
+
+                if (type === 'click' && !preferredSelector) {
+                  while (target.parentNode) {
+                    target = target.parentNode
+                    preferredSelector = getPreferredSelector(target)
+
+                    if (preferredSelector) {
+                      break
+                    }
+                  }
+                }
 
                 if (!preferredSelector) {
                   return
@@ -299,7 +311,7 @@ const reloadTestRecorder = async () => {
                   addTestStep({
                     type: 'event',
                     event: type,
-                    value: e.target.value,
+                    value: target.value,
                     selector: preferredSelector
                   })
 

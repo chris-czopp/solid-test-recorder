@@ -1,10 +1,9 @@
-export default `
 import '@testing-library/jest-dom';
 
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { afterAll, afterEach, beforeAll, vi } from 'vitest';
-import mockedRequests from './test/mocked-requests';
+import mockedRequests from './test/mocked-requests.json';
 
 const methodToRestHandlerMapping = {
   POST: rest.post,
@@ -40,7 +39,7 @@ const server = setupServer(
     return methodToRestHandlerMapping[method](path, (req, res, ctx) => {
       process.nextTick(() => {
         spies[
-          \`${responseStatus} ${req.method} ${req.url.pathname}\` as MockRequestIdentifierType
+          `${responseStatus} ${req.method} ${req.url.pathname}` as MockRequestIdentifierType
         ]();
       });
 
@@ -55,4 +54,3 @@ const server = setupServer(
 beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
 afterAll(() => server.close());
 afterEach(() => server.resetHandlers());
-`
