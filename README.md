@@ -70,11 +70,18 @@ and you should have a `./test/mocked-requests.json` file.
 
 ## Roadmap
 
-- Convert it to TypeScript.
-- Store tests in files which can be then uploaded.
-- Write e2e tests (how ironic?).
+1. Produce short video tutorials as documentation. 
+2. Convert it to TypeScript. 
+3. Write e2e tests (how ironic?). 
+4. Store tests in files which can be then uploaded (and sort of replayed).
   
 Visit [solidjs discord channel](https://discord.com/invite/solidjs) where I'll be posting updates. Don't hesitate to DM for any questions related to the project.
+
+## Contributing
+
+The codebase needs to be converted to TypeScript before it can be workable by a team. 
+Also, I have an idea how to e2e test it, and this would also need to happen before any major logic changes.
+Anyway, feel free to create issues and PRs, just want to highlight the priorities.
 
 ## License
 
