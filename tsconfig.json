@@ -1,0 +1,28 @@
+{
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": true,
+    "outDir": "dist",
+    "module": "esnext",
+    "target": "esnext",
+    "esModuleInterop": true,
+    "lib": [
+      "dom",
+      "es2020"
+    ],
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "paths": {
+      "src": [
+        "src"
+      ]
+    }
+  }
+}

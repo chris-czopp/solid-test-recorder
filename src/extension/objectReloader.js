@@ -1,4 +1,4 @@
-;(() => {
+(() => {
   try {
     if (!window.reloadTestRecorder) {
       delete window.global

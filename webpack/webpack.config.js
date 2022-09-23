@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
@@ -179,5 +180,6 @@ module.exports = {
       path: require.resolve('path-browserify'),
       util: require.resolve('util')
     }
-  }
+  },
+  devtool: 'source-map'
 }

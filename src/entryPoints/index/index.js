@@ -107,9 +107,9 @@ const reloadTestRecorder = async () => {
 
   !Object.prototype.hasOwnProperty.call(context.config, 'codeTemplates') &&
     Object.defineProperty(context.config, 'codeTemplates', {
-      set() {},
+      set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
       get() {
-        ;(async () => {
+        (async () => {
           const codeTemplates = await getCodeTemplates()
 
           showOverlay(
@@ -143,9 +143,9 @@ const reloadTestRecorder = async () => {
 
   !Object.prototype.hasOwnProperty.call(context.config, 'excludedRequests') &&
     Object.defineProperty(context.config, 'excludedRequests', {
-      set() {},
+      set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
       get() {
-        ;(async () => {
+        (async () => {
           const excludedRequests = JSON.parse(localStorage.getItem('str_excludedRequests')) || []
 
           showOverlay(
@@ -169,7 +169,7 @@ const reloadTestRecorder = async () => {
   !Object.prototype.hasOwnProperty.call(context, 'describe') &&
     Object.defineProperty(context, 'describe', {
       set(value) {
-        ;(async () => {
+        (async () => {
           await addTestFile(value)
           updateTestFiles(context)
         })()
@@ -187,7 +187,7 @@ const reloadTestRecorder = async () => {
   !Object.prototype.hasOwnProperty.call(context, 'it') &&
     Object.defineProperty(context, 'it', {
       set(value) {
-        ;(async () => {
+        (async () => {
           await addTestCase(value)
           updateTestCases(context)
         })()
@@ -273,7 +273,7 @@ const reloadTestRecorder = async () => {
 
       !Object.prototype.hasOwnProperty.call(context.capture, type) &&
         Object.defineProperty(context.capture, type, {
-          set() {},
+          set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
           get() {
             if (eventListeners[type]) {
               document.body.removeEventListener(type, eventListeners[type])
@@ -332,7 +332,7 @@ const reloadTestRecorder = async () => {
 
             Object.defineProperty(context, 'stopCapturing', {
               configurable: true,
-              set() {},
+              set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
               get() {
                 clearInterval(interval)
 
@@ -357,7 +357,7 @@ const reloadTestRecorder = async () => {
 
   !Object.prototype.hasOwnProperty.call(context, 'seeResult') &&
     Object.defineProperty(context, 'seeResult', {
-      set() {},
+      set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
       get() {
         const testState = JSON.parse(sessionStorage.getItem('str_testState')) || {
           spies: []
@@ -394,7 +394,7 @@ const reloadTestRecorder = async () => {
 
   !Object.prototype.hasOwnProperty.call(context, 'clear') &&
     Object.defineProperty(context, 'clear', {
-      set() {},
+      set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
       get() {
         clearDb()
 
@@ -404,7 +404,7 @@ const reloadTestRecorder = async () => {
 
   !Object.prototype.hasOwnProperty.call(context, 'closeEditor') &&
     Object.defineProperty(context, 'closeEditor', {
-      set() {},
+      set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
       get() {
         if (!closeOverlay()) {
           return 'no editor to close'
@@ -416,7 +416,7 @@ const reloadTestRecorder = async () => {
 
   !Object.prototype.hasOwnProperty.call(context, 'applyChanges') &&
     Object.defineProperty(context, 'applyChanges', {
-      set() {},
+      set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
       get() {
         closeOverlay()
 
@@ -432,9 +432,9 @@ const reloadTestRecorder = async () => {
 
   !Object.prototype.hasOwnProperty.call(context, 'editTest') &&
     Object.defineProperty(context, 'editTest', {
-      set() {},
+      set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
       get() {
-        ;(async () => {
+        (async () => {
           showOverlay(
             [
               {
@@ -491,9 +491,9 @@ const reloadTestRecorder = async () => {
 
   !Object.prototype.hasOwnProperty.call(context, 'help') &&
     Object.defineProperty(context, 'help', {
-      set() {},
+      set() {}, // eslint-disable-line @typescript-eslint/no-empty-function
       get() {
-        ;(async () => {
+        (async () => {
           console.table([
             ['Active test file', await getCurrentTestFileDescription()],
             ['Active test case', `${await getCurrentTestCaseDescription()}`],

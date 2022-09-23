@@ -1,6 +1,8 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": [
-    "standard"
+    "standard",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2020
@@ -10,6 +12,9 @@
     "es6": true,
     "mocha": true
   },
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
     "indent": "off",
     "jsx-quotes": [

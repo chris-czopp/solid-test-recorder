@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 const setSelectedElement = (selectedNode) => {
   const prevSelectedNode = document.querySelector('[data-str-selected-element]')
   const prevScriptNode = document.querySelector('body [data-str-script]')
