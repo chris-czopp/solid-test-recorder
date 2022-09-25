@@ -506,7 +506,7 @@ const reloadTestRecorder = async () => {
             ['=====', '====='],
             ['# Available commands:', '🠗'],
             ['$str.config.codeTemplates', 'allows to edit the code template used when generation test file'],
-            ['$str.config.excludedRequests', 'allows to specify list of URLs to ignore when capturing requests.'],
+            ['$str.config.excludedRequests', 'allows to specify list of URLs to ignore when capturing requests'],
             ['$str.describe', 'creates a new test file with a given description'],
             ['$str.it', 'creates a new test case with a given description'],
             ['$str.expect.*', 'adds a new asser on a currently selected element'],

@@ -68,6 +68,34 @@ and you should have a `./test/mocked-requests.json` file.
 
 > There are more interesting commands. I'll be recording video tutorials soon so bear with me! 
 
+### Available Commands
+
+|                                      |                                                                                           |
+|--------------------------------------|-------------------------------------------------------------------------------------------|
+| **Configuration:**                   |                                                                                           |
+| `$str.config.codeTemplates`          | allows to edit the code template used when generation test file                           |
+| `$str.config.excludedRequests`       | allows to specify list of URLs to ignore when capturing requests                          |
+| **Testing:**                         |                                                                                           |
+| `$str.describe `                     | creates a new test file with a given description                                          |
+| `$str.it`                            | creates a new test case with a given description                                          |
+| `$str.expect.*`                      | adds a new asser on a currently selected element                                          |
+| `$str.capture.*`                     | starts event capturing i.e. auto-generation user events and subsequent requests           |
+| `$str.stopCapturing`                 | stops event capturing                                                                     |
+| `$str.seeResult`                     | opens editor with a generated test file and request mock                                  |
+| `$str.editTest`                      | allows to reposition or remove test cases and test steps and setting their active cursors |
+| **Changing current test file/case:** |                                                                                           |
+| `$str.use.file`                      | allows to switch to a given test file                                                     |
+| `$str.use.case`                      | allows to switch to a given test case                                                     |
+| **Controlling editor:**              |                                                                                           |
+| `$str.applyChanges`                  | saves changes and closes editor(s)                                                        |
+| `$str.closeEditor`                   | discards any changes and closes editor(s)                                                 |
+| **Data collections:**                |                                                                                           |
+| `$str.$requests`                     | captured HTTP requests                                                                    |
+| `$str.$files`                        | test files                                                                                |
+| `$str.$cases`                        | test cases                                                                                |
+
+> Dangerous: `$str.clear` - removes all the test data
+
 ## Roadmap
 
 1. Produce short video tutorials as documentation. 
