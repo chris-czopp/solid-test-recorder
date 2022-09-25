@@ -4,7 +4,7 @@ import {
   addTestFile,
   addTestCase,
   addTestStep,
-  addMultipeTestSteps,
+  addMultipleTestSteps,
   getCurrentTestFileDescription,
   getCurrentTestCaseDescription,
   getCurrentTestCasesWithSteps,
@@ -336,7 +336,7 @@ const reloadTestRecorder = async () => {
               get() {
                 clearInterval(interval)
 
-                addMultipeTestSteps(
+                addMultipleTestSteps(
                   newRequests.map((uri) => ({
                     type: 'waitFor',
                     uri

@@ -221,7 +221,7 @@ export const addTestCase = async (description) => {
   const testCaseId = `${currentTestFile}_${encodeURIComponent(description)}`
   const currentDescribeCursor = await getCurrentDescribeCursor(db)
 
-  testCases.splice(currentDescribeCursor || testCases.length, 0, testCaseId)
+  testCases.splice(typeof currentDescribeCursor === 'number' ? currentDescribeCursor : testCases.length, 0, testCaseId)
 
   const transaction = db.transaction(DB_NAME, 'readwrite')
   const store = transaction.objectStore(DB_NAME)
@@ -229,7 +229,7 @@ export const addTestCase = async (description) => {
   await store.put(description, `${testCaseId}_it`)
   await store.put(testCaseId, 'currentTestCase')
   await store.put(testCases, `${currentTestFile}_testCases`)
-  await storeCurrentDescribeCursor(store, currentDescribeCursor ? currentDescribeCursor + 1 : testCases.length)
+  await storeCurrentDescribeCursor(store, typeof currentDescribeCursor === 'number' ? currentDescribeCursor + 1 : testCases.length)
   await transaction.done
 
   db.close()
@@ -283,19 +283,19 @@ export const addTestStep = async (testStep) => {
   const testSteps = (await db.get(DB_NAME, `${currentTestCase}_steps`)) || []
   const currentItCursor = await getCurrentItCursor(db)
 
-  testSteps.splice(currentItCursor || testSteps.length, 0, testStep)
+  testSteps.splice(typeof currentItCursor === 'number' ? currentItCursor : testSteps.length, 0, testStep)
 
   const transaction = db.transaction(DB_NAME, 'readwrite')
   const store = transaction.objectStore(DB_NAME)
 
   await store.put(testSteps, `${currentTestCase}_steps`)
-  await storeCurrentItCursor(store, currentItCursor ? currentItCursor + 1 : testSteps.length)
+  await storeCurrentItCursor(store, typeof currentItCursor === 'number' ? currentItCursor + 1 : testSteps.length)
   await transaction.done
 
   db.close()
 }
 
-export const addMultipeTestSteps = async (testSteps) => {
+export const addMultipleTestSteps = async (testSteps) => {
   const db = await openDB(DB_NAME, DB_VERSION, {
     upgrade(db) {
       db.createObjectStore(DB_NAME)
@@ -306,13 +306,13 @@ export const addMultipeTestSteps = async (testSteps) => {
   const currentTestSteps = (await db.get(DB_NAME, `${currentTestCase}_steps`)) || []
   const currentItCursor = await getCurrentItCursor(db)
 
-  currentTestSteps.splice(currentItCursor || currentTestSteps.length, 0, ...testSteps)
+  currentTestSteps.splice(typeof currentItCursor === 'number' ? currentItCursor : currentTestSteps.length, 0, ...testSteps)
 
   const transaction = db.transaction(DB_NAME, 'readwrite')
   const store = transaction.objectStore(DB_NAME)
 
   await store.put(currentTestSteps, `${currentTestCase}_steps`)
-  await storeCurrentItCursor(store, currentItCursor ? currentItCursor + testSteps.length : currentTestSteps.length)
+  await storeCurrentItCursor(store, typeof currentItCursor === 'number' ? currentItCursor + testSteps.length : currentTestSteps.length)
   await transaction.done
 
   db.close()
@@ -330,8 +330,9 @@ export const getDescribeEditString = async () => {
   const editString = await Promise.all(
     testCases.map(async (testCaseId, index) => `#${index} ${await db.get(DB_NAME, `${testCaseId}_it`)}`)
   )
+  const currentDescribeCursor = await getCurrentDescribeCursor(db)
 
-  editString.splice((await getCurrentDescribeCursor(db)) || editString.length, 0, '^')
+  editString.splice(typeof currentDescribeCursor === 'number' ? currentDescribeCursor : editString.length, 0, '^')
 
   db.close()
 
@@ -391,8 +392,9 @@ export const getItEditString = async () => {
         }).code
       }`
   )
+  const currentItCursor = await getCurrentItCursor(db)
 
-  editString.splice((await getCurrentItCursor(db)) || editString.length, 0, '^')
+  editString.splice(typeof currentItCursor === 'number' ? currentItCursor : editString.length, 0, '^')
 
   db.close()
 
