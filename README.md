@@ -1,13 +1,13 @@
 # Solid Test Recorder
 
-**Automated Chrome extension to generate unit/integration tests for [solidjs](https://www.solidjs.com/)**
+**Chrome extension to generate UI unit/integration tests for [solidjs](https://www.solidjs.com/)**
 
 ## Features
 
 - Generates UI tests which relay on [vitest](https://vitest.dev/) and [msw](https://mswjs.io/) which follow solidjs guidelines.
-- Uses a combination of devtools element inspector and console which gives great recording control e.g. terminal-like auto-completion.
+- Uses a combination of Chrome DevTools element inspector and console which gives great recording control e.g. terminal-like auto-completion.
 - Auto-generates the most specific selector for inspected element.
-- Records network requests and generates mocks and their spies.
+- Records network requests and generates mocks and spies for them.
 
 ## Motivation
 
@@ -24,7 +24,7 @@ $ docker-compose up
 $ docker exec -it docker solid_test_recorder yarn build
 ```
 
-or run these on you machine:
+or run these on your machine:
 
 ```bash
 $ yarn install
@@ -35,7 +35,7 @@ Then, upload /dist directory as an unpacked extension. See this [link](https://d
 
 ## Usage
 
-As soon as you open devtools, in Console, you'll get access to `$str` (Solid Test Recorder) global var. You can execute `$str.help` for available commands.
+As soon as you open Chrome DevTools, in console, you'll get access to `$str` (Solid Test Recorder) global var. You can execute `$str.help` command for available commands.
 
 The usual flow would be:
 
@@ -43,7 +43,7 @@ The usual flow would be:
 $str.clear // to start new test file
 $str.describe = 'my component'
 $str.it = 'should do something'
-$str.expect.to* // use element inspector to choose the element in question
+$str.expect.toBeInTheDocument = true // use element inspector to choose the element, assert type and whether it's positive or negation
 ```
 
 You'll be also often capturing events e.g.:
@@ -53,7 +53,7 @@ $str.capture.click // or any available DOM event
 // click at the button in the browser
 $str.stopCapturing
 // and then again...
-$str.expect.to*
+$str.expect.toBeChecked = false // or any availble assert type in testing library
 ```
 
 To see the results which will open as 2 vertical editors:
@@ -63,10 +63,15 @@ $str.seeResult // to close $str.closeEditor
 
 In the first one you'll see your test file, and the second is API mock data generated from the actual network requests.
 
-In order to use the test, your setupVitest.ts in the root directory should look like [this](https://github.com/chris-czopp/solid-test-recorder/blob/master/src/testHelpers/setupVitest.txt)
-and you should have a `./test/mocked-requests.json` file. 
+In order to use the test, your `setupVitest.ts` in the root directory should look like [this](https://github.com/chris-czopp/solid-test-recorder/blob/master/src/testHelpers/setupVitest.txt)
+and you should create a `./test/mocked-requests.json` file. 
 
-> There are more interesting commands. I'll be recording video tutorials soon so bear with me! 
+```
+.
+├── test
+│   └── mocked-requests.json
+└── setupVitest.ts
+```
 
 ### Available Commands
 
