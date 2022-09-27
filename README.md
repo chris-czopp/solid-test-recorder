@@ -2,6 +2,8 @@
 
 **Chrome extension to generate UI unit/integration tests for [solidjs](https://www.solidjs.com/)**
 
+> You can also use it for [react](https://reactjs.org/) or [preact](https://preactjs.com/) with little config tweaks. 
+
 ## Features
 
 - Generates UI tests which relay on [vitest](https://vitest.dev/) and [msw](https://mswjs.io/) which follow solidjs guidelines.
