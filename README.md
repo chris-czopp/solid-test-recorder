@@ -9,6 +9,10 @@
 - Auto-generates the most specific selector for inspected element.
 - Records network requests and generates mocks and spies for them.
 
+
+https://user-images.githubusercontent.com/22557930/192564569-6992914e-b6bd-4919-89ff-2539cd34e6f6.mp4
+
+
 ## Motivation
 
 Writing UI tests is boring yet extremely important. This extension is meant to make it more fun and attract developers to write more tests.
