@@ -32,9 +32,7 @@ Object.assign(eslintConfig.rules, {
 })
 
 export default (code) => {
-  const { messages, output: lintedCode } = linter.verifyAndFix(code, eslintConfig, { fix: true })
-
-  console.info('linter', { messages })
+  const { output: lintedCode } = linter.verifyAndFix(code, eslintConfig, { fix: true })
 
   const formattedCode = prettier.format(lintedCode, {
     parser: (code) => parseCode(code, { sourceType: 'module', plugins: ['jsx'] }),

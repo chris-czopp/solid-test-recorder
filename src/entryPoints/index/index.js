@@ -591,3 +591,5 @@ window.addEventListener('message', (e) => {
     debounceTimeout = undefined
   }, 500)
 })
+
+reloadTestRecorder()
