@@ -1,3 +1,7 @@
+<p>
+  <img width="100%" src="https://assets.solidjs.com/banner?type=Solid Test Recorder&background=tiles&project=%20" alt="{{name_of_lib}}">
+</p>
+
 # Solid Test Recorder
 
 **Chrome extension to generate UI unit/integration tests for [solidjs](https://www.solidjs.com/)**
