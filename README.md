@@ -1,5 +1,5 @@
 <p>
-  <img width="100%" src="https://assets.solidjs.com/banner?type=Solid Test Recorder&background=tiles&project=%20" alt="{{name_of_lib}}">
+  <img width="100%" src="https://assets.solidjs.com/banner?type=solid-test-recorder&background=tiles&project=%20" alt="solid-test-recorder">
 </p>
 
 # Solid Test Recorder
